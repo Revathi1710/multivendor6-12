@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import EnquiryModal from './EnquiryMode';
-
+import { Link } from 'react-router-dom';
 const AllProducts = ({ location }) => {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState('');
@@ -70,9 +70,7 @@ const AllProducts = ({ location }) => {
     setShowModal(false);
     setSelectedProduct(null);
   };
-  const handleView = (ProductId) => {
-    window.location.href = `/ProductView/${ProductId}`;
-  };
+
   return (
     <div className="container14 mt-4">
       {message && <p>{message}</p>}
@@ -95,7 +93,9 @@ const AllProducts = ({ location }) => {
                 />
               )}
               <div className="card-body">
-              <h5 className="card-title ellipsis2"  onClick={() => handleView(product._id)}>{product.name}</h5>
+              <Link to={`/ProductView/${product._id}`} className="card-title ellipsis2">
+                  <h5>{product.name}</h5>
+                </Link>
                 <div className='companydetails mt-4'>{product.vendorDetails.businessName}</div>
                 <div className='companydetails mt-4'>{product.vendorDetails.City},{product.vendorDetails.State}</div>
                 <a className="viewnumber-btn">

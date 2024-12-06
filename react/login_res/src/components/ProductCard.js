@@ -1,19 +1,17 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const ProductCard = (props) => {
-
-  const handleView = () => {
-    window.location.href = `/ServiceView/${props._id}`;
-  };
-
   return (
     <Card style={{ width: "100%" }}>
       <Card.Img variant="top" src={props.imgSrc} />
       <Card.Body>
-        <Card.Title className="ellipsis2" onClick={handleView}>
-          {props.name || "Card Title"}
-        </Card.Title>
+        <Link to={`/ServiceView/${props._id}`} className="ellipsis2">
+          <Card.Title>
+            {props.name || "Card Title"}
+          </Card.Title>
+        </Link>
       </Card.Body>
     </Card>
   );

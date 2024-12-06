@@ -17,7 +17,12 @@
    margin-bottom:7px;
   transition: all 0.2s ease-in-out;
 }
-
+a{
+  text-decoration: none;
+}
+.card-title{
+  color:black;
+}
 .btn-3d:active {
   box-shadow: 0 2px #0056b3;
   transform: translateY(3px);

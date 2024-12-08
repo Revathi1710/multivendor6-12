@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../components/navbar';
 import backgroundImageSignup from '../icons/650pxmbn.png';
+import forgotpass from '../icons/forgotpass.png';
+
 import { Link } from 'react-router-dom';
 export default class SignUp extends Component {
   constructor(props) {
@@ -142,11 +144,11 @@ export default class SignUp extends Component {
     
       
       
-        <div className='container'>
+        <div className=''>
           {!formSubmitted ? (
             <form onSubmit={this.handleSubmit}>
              
-              <div className='formbox'>
+              <div className='formbox container'>
              <div className="form-container signupform col-sm-4">
               <h3 className='mt-2 mb-4'>Signup</h3>
 
@@ -239,23 +241,34 @@ export default class SignUp extends Component {
               </div>
             </form>
           ) : (
-            <div>
-              <h3>Verify Email OTP</h3>
-              <div className="form-container">
+            <div className='verifybackground' style={{
+              backgroundColor: 'rgb(193 217 251)', // Use backgroundColor for solid colors
+             
+            }}>
+              <div className='formbox container'>
+              <div className="imagesignup col-sm-6">
+                <img src={forgotpass} className="forgotimage" />
+              </div>
+              <div className="form-container  otpform col-sm-4">
+              <h3 className='mt-3 mb-3'>OTP Verification</h3>
                 <div className="mb-3">
-                  <div className="labelcontainer mb-3">
-                    <label>Email OTP</label>
-                  </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter OTP"
-                    onChange={(e) => this.setState({ emailOtp: e.target.value })}
-                  />
-                  <button type="button" onClick={this.handleVerifyOtp}>
-                    Verify OTP
+                <div className="mb-3 input-group">
+                        <span className="input-group-text">
+                          <i className="fa fa-key"></i>
+                        </span>
+                        <input
+                          type="text"
+                          className="form-control signupinput"
+                          placeholder="Enter OTP"
+                          onChange={(e) => this.setState({ emailOtp: e.target.value })}
+                        />
+                      </div>
+                  <button type="button"  className="btn btn-3d"onClick={this.handleVerifyOtp}>
+                    Verify & Proceed
                   </button>
                 </div>
+              </div>
+             
               </div>
             </div>
           )}

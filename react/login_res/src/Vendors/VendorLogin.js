@@ -103,7 +103,7 @@ export default class Login extends Component {
                   />
                  </div>
                  <div class="text-end mt-2 mb-3">
-                 <Link to="/forgotpassword">Forgot Password?</Link>
+                 <Link to="/ForgetPassword">Forgot Password?</Link>
                  </div>
                  
 

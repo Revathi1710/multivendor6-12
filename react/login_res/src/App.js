@@ -60,7 +60,8 @@ import AddSubCategoryAdmin from './SuperAdmin/AddSubCategoryAdmin';
 import AllSubcategory from './SuperAdmin/AllSubCategory';
 
 
-
+import ForgetPassword from './Vendors/ForgetPassword';
+import ResetPassword from './Vendors/ResetPassword';
 import VendorSelectPlan from './Vendors/PlanDetails';
 import UserProfile from './Vendors/UserProfile';
 import VendorHeader from './Vendors/vendorHeader';
@@ -148,6 +149,9 @@ function App() {
           
           <Route path="/Vendor/Login" element={< VendorLogin />} />
           <Route path="/Vendor/Signup" element={< VendorSignup />} />
+          <Route path="/ForgetPassword" element={< ForgetPassword />} />
+          <Route path="/reset-password/:token" element={< ResetPassword />} />
+          
           <Route path="/Vendor/businessDetails" element={< BusinessDetails />} />
           <Route path="/Vendor/sidebar" element={< Vendorsidebar />} />
           <Route path="/Vendor/AddCategory" element={< AddCategoryVendor />} />

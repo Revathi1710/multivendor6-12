@@ -12,7 +12,29 @@
       background-color: white;
       border:3px solid rgb(59 147 122);
   }
-
+  .forgotimage{
+   
+  }
+  .otpform{
+    padding: 20px;
+    margin:auto;
+    
+      border-radius: 10px;
+     
+      background-color: white;
+      border: 3px solid rgb(91 173 255);
+  }
+  .verifybackground{
+    height: 85vh;
+  }
+  .forgotpassbackground{
+    background: #5682af;
+    height: 86vh;
+  }
+  .resetsbackground{
+    background:#ffbe6e;
+    height:86vh;
+  }
        @media only screen and (max-width: 768px){
   .login-card{
       width:80%;

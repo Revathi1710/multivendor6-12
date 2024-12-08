@@ -12,6 +12,8 @@ const VendorSchema = new mongoose.Schema({
     whatsappNumber: String,
     jobTitle: String,
     password: String,
+    resetPasswordToken: String, // For password reset functionality
+    resetPasswordExpires: Date, // Token expiration time
     businessSlug: { type: String, unique: true },  // Add slug field
     
     OfficeContact: String,

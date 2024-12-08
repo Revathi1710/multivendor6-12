@@ -22,6 +22,7 @@ const Business=require('./models/BusinessProfile');
 const SubCategory=require('./models/SubCategory');
 const fs = require('fs');
 const csv = require('csv-parser');
+const crypto = require('crypto');
 const WebsiteSetup = require('./models/Website');
 const LeadForm = require('./models/LeadForm');
 const JWT_SECRET = process.env.JWT_SECRET || "fjuyrhuhuehdkjidhjdjhdjh8r4"; // Use environment variables
@@ -2598,8 +2599,81 @@ app.post("/addLeadForm", async (req, res) => {
 });
 
 
+// Password reset route
+app.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
 
+  // Set up Nodemailer transport using Gmail (ensure Gmail app password is used)
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'revathid883@gmail.com', // Your Gmail address
+      pass: 'aajh zegi lawi gjgc', // App password or OAuth2 credentials
+    },
+  });
 
+  try {
+    // Find the vendor by email
+    const vendor = await Vendor.findOne({ email });
+    if (!vendor) {
+      return res.status(404).send({ message: 'No user found with this email' });
+    }
+
+    // Create a password reset token using crypto
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    vendor.resetPasswordToken = resetToken;
+    vendor.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiry
+    await vendor.save();
+
+    // Construct the reset link
+    const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+
+    // Set up the email content
+    const mailOptions = {
+      from: 'revathid883@gmail.com',
+      to: email,
+      subject: 'Password Reset Request',
+      text: `You requested a password reset. Click the link below to reset your password:\n\n${resetLink}`,
+    };
+
+    // Send the reset email
+    await transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        return res.status(500).send({ message: 'Error sending password reset link', error: error.message });
+      }
+      console.log('Password reset email sent:', info.response);
+      res.status(200).send({ message: 'Password reset link sent to your email' });
+    });
+
+  } catch (error) {
+    console.error('Error during password reset:', error);
+    res.status(500).send({ message: 'Error sending password reset link', error: error.message });
+  }
+});
+app.post('/verify-token/:token', async (req, res) => {
+  const { token } = req.params;
+
+  if (!token) {
+    return res.status(400).json({ success: false, message: "Token is required" });
+  }
+
+  try {
+    const user = await Vendor.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }, // Ensure token is not expired
+    });
+
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Invalid or expired token" });
+    }
+
+    res.status(200).json({ success: true, message: "Token is valid" });
+  } catch (error) {
+    console.error("Error during token verification:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

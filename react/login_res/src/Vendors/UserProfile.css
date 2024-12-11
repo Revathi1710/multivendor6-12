@@ -1,5 +1,5 @@
 .percentage{
-    margin: 20px;
+    margin:0px 20px;
     padding:10px;
     background-color: #15b5d9;
     color:white;
@@ -123,6 +123,14 @@
 .listout{
   text-decoration: none;
   color: black;
+}
+.userinfo-container{
+  background-color: white;
+  padding: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.list_sidebar{
+  position: relative;
 }
 
 

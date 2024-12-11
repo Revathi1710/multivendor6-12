@@ -6,8 +6,9 @@ import VendorHeader from './vendorHeader';
 import '../SuperAdmin/addcategory.css';
 import './sidebar2.css';
 import './businessProfile.css';
+import percentageimage1 from '../icons/percentageimage1.png';
 
-
+import infogif from '../icons/gifinfo.gif';
 
 
 const UpdateProfileVendor = () => {
@@ -129,65 +130,73 @@ const UpdateProfileVendor = () => {
     <div className="update-profile-vendor">
       <VendorHeader />
       <div className="content row mt-4">
-        <div className='col-sm-2 mt-5 businessSidebar'>
+      <div className='col-sm-3'>
           <ul className='VendorList'>
-            <li className='list'><i className="fa fa-laptop"></i> Dashboard</li>
+            <li className='list'><i className="fa fa-laptop sidebaricon"></i> Dashboard</li>
           </ul>
           <ul className="nano-content VendorList">
             <li className={`sub-menu list ${activeSubMenu === 5 ? 'active' : ''}`}>
               <a href="#!" onClick={() => handleSubMenuToggle(5)}>
-                <i className="fa fa-cogs"></i><span>Profile</span><i className="arrow fa fa-angle-right pull-right"></i>
+                <i className="fa fa-cogs sidebaricon"></i><span>Profile</span><i className="arrow fa fa-angle-right pull-right"></i>
               </a>
-              <ul style={{ display: activeSubMenu === 5 ? 'block' : 'none' }}>
-                <li><Link to="/Vendor/UserProfile">User Profile</Link></li>
-                <li><Link to="/Vendor/BusinessProfile">Business Profile</Link></li>
-                <li><Link to="/Vendor/BankDetails">Bank Details</Link></li>
+              <ul style={{ display: activeSubMenu === 5 ? 'block' : 'none' }} className='vendorsidebarmenu'>
+                <li className='list_sidebar'><Link to="/Vendor/UserProfile" className='listsidebar'>User Profile</Link></li>
+                <li className='list_sidebar'><Link to="/Vendor/BusinessProfile" className='listsidebar'>Business Profile</Link></li>
+                <li className='list_sidebar'><Link to="/Vendor/BankDetails" className='listsidebar'>Bank Details</Link></li>
               </ul>
             </li>
-           
             <li className={`sub-menu list ${activeSubMenu === 0 ? 'active' : ''}`}>
               <a href="#!" onClick={() => handleSubMenuToggle(0)}>
-                <i className="fa fa-cogs"></i><span>Category</span><i className="arrow fa fa-angle-right pull-right"></i>
+                <i className="fa fa-cogs sidebaricon"></i><span>Category</span><i className="arrow fa fa-angle-right pull-right"></i>
               </a>
-              <ul style={{ display: activeSubMenu === 0 ? 'block' : 'none' }}>
-                <li><Link to="/Vendor/AllCategory">All Categories</Link></li>
-                <li><Link to="/Vendor/AddCategory">Add New Category</Link></li>
+              <ul style={{ display: activeSubMenu === 0 ? 'block' : 'none' }} className='vendorsidebarmenu'>
+                <li className='list_sidebar'><Link to="/Vendor/AllCategory" className='listsidebar'>All Categories</Link></li>
+                <li className='list_sidebar'><Link to="/Vendor/AddCategory" className='listsidebar'>Add New Category</Link></li>
               </ul>
             </li>
             {vendorData.selectType === "Product Based Company" && (
     <li className={`sub-menu list ${activeSubMenu === 3 ? 'active' : ''}`}>
       <a href="#!" onClick={() => handleSubMenuToggle(3)}>
-        <i className="fa fa-cogs"></i><span>Product</span><i className="arrow fa fa-angle-right pull-right"></i>
+        <i className="fa fa-cogs sidebaricon"></i><span>Product</span><i className="arrow fa fa-angle-right pull-right"></i>
       </a>
-      <ul style={{ display: activeSubMenu === 3 ? 'block' : 'none' }}>
-        <li><Link to="/Vendor/AllProduct">All Product</Link></li>
-        <li><Link to="/Vendor/AddProduct">Add Product</Link></li>
+      <ul style={{ display: activeSubMenu === 3 ? 'block' : 'none' }} className='vendorsidebarmenu'>
+        <li className='list_sidebar'><Link to="/Vendor/AllProduct" className='listsidebar'>All Product</Link></li>
+        <li className='list_sidebar'><Link to="/Vendor/AddProductVendor" className='listsidebar'>Add Product</Link></li>
       </ul>
     </li>
   )}
   {vendorData.selectType === "Service Based Company" && (
     <li className={`sub-menu list ${activeSubMenu === 1 ? 'active' : ''}`}>
       <a href="#!" onClick={() => handleSubMenuToggle(1)}>
-        <i className="fa fa-cogs"></i><span>Service</span><i className="arrow fa fa-angle-right pull-right"></i>
+        <i className="fa fa-cogs sidebaricon"></i><span>Service</span><i className="arrow fa fa-angle-right pull-right"></i>
       </a>
-      <ul style={{ display: activeSubMenu === 1 ? 'block' : 'none' }}>
-        <li><Link to="/Vendor/AllService">All Service</Link></li>
-        <li><Link to="/Vendor/AddService">Add Service</Link></li>
+      <ul style={{ display: activeSubMenu === 1 ? 'block' : 'none' }} className='vendorsidebarmenu'>
+        <li className='list_sidebar'><Link to="/Vendor/AllService" className='listsidebar'>All Service</Link></li>
+        <li className='list_sidebar'><Link to="/Vendor/AddService" className='listsidebar'>Add Service</Link></li>
       </ul>
     </li>
   )}
             <li className={`sub-menu list ${activeSubMenu === 2 ? 'active' : ''}`}>
               <a href="#!" onClick={() => handleSubMenuToggle(2)}>
-                <i className="fa fa-cogs"></i><span>Enquiry</span><i className="arrow fa fa-angle-right pull-right"></i>
+                <i className="fa fa-cogs sidebaricon"></i><span>Enquiry</span><i className="arrow fa fa-angle-right pull-right"></i>
               </a>
-              <ul style={{ display: activeSubMenu === 2 ? 'block' : 'none' }}>
-                <li><Link to="/Vendor/AllEnquiry">All Enquiry</Link></li>
+              <ul style={{ display: activeSubMenu === 2 ? 'block' : 'none' }} className='vendorsidebarmenu'>
+                <li className='list_sidebar'><Link to="/Vendor/AllEnquiryVendor" className='listsidebar'>All Enquiry</Link></li>
               </ul>
+             
             </li>
+            <ul className='VendorList'>
+            <li className='list'><Link to="/Vendor/MyOrders" className='listout listsidebar'><i className="fa fa-laptop sidebaricon"></i>My Orders</Link></li>
           </ul>
+          </ul>
+          <img 
+        src={infogif} 
+        alt="Loading..." 
+        style={{  height: 'auto', borderRadius: '10px' }} 
+      />
         </div>
-        <div className='col-sm-7 form'>
-          <h3>Business Profile</h3>
+        <div className='col-sm-6 businessinfo-container'>
+          <h3 className='title-vendorInfo'>Business Profile</h3>
           {error && <p className="error">{error}</p>}
           <div className="form-container">
             {/*<div className='row threesection'>
@@ -216,8 +225,8 @@ const UpdateProfileVendor = () => {
   {showCompanyDetails && (
     <div>
       <div className="form-group">
-        <div className="mb-3">
-          <div className="labelcontainer mb-3">
+        <div className="mb-2">
+          <div className="labelcontainer">
             <label htmlFor="businessName">Company Name:</label>
           </div>
           <input
@@ -234,8 +243,8 @@ const UpdateProfileVendor = () => {
       </div>
       <div className='row'>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="OfficeContact">Office Contact Number:</label>
             </div>
             <input
@@ -251,8 +260,8 @@ const UpdateProfileVendor = () => {
           </div>
         </div>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="FaxNumber">Fax Number:</label>
             </div>
             <input
@@ -269,8 +278,8 @@ const UpdateProfileVendor = () => {
       </div>
       <div className='row'>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="Ownership">Ownership Type:</label>
             </div>
             <select
@@ -292,8 +301,8 @@ const UpdateProfileVendor = () => {
           </div>
         </div>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="AnnualTakeover">Annual Takeover</label>
             </div>
             <input
@@ -310,8 +319,8 @@ const UpdateProfileVendor = () => {
       </div>
       <div className='row'>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="establishment">Year of Establishment:</label>
             </div>
             <input
@@ -326,8 +335,8 @@ const UpdateProfileVendor = () => {
           </div>
         </div>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="NoEmployee">Number of Employees:</label>
             </div>
             <input
@@ -377,8 +386,8 @@ const UpdateProfileVendor = () => {
   {showAddressDetails && (
     <div>
       <div className="form-group">
-        <div className="mb-3">
-          <div className="labelcontainer mb-3">
+        <div className="mb-2">
+          <div className="labelcontainer">
             <label htmlFor="Address">Address:</label>
           </div>
           <textarea
@@ -394,8 +403,8 @@ const UpdateProfileVendor = () => {
       </div>
       <div className='row'>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="City">City:</label>
             </div>
             <input
@@ -411,8 +420,8 @@ const UpdateProfileVendor = () => {
           </div>
         </div>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="State">State:</label>
             </div>
             <input
@@ -429,8 +438,8 @@ const UpdateProfileVendor = () => {
       </div>
       <div className='row'>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="Pincode">Pincode:</label>
             </div>
             <input
@@ -445,8 +454,8 @@ const UpdateProfileVendor = () => {
           </div>
         </div>
         <div className="form-group col-sm-6">
-          <div className="mb-3">
-            <div className="labelcontainer mb-3">
+          <div className="mb-2">
+            <div className="labelcontainer">
               <label htmlFor="Country">Country</label>
             </div>
             <input
@@ -474,7 +483,7 @@ const UpdateProfileVendor = () => {
           
         </div>
           
-        <div className='col-sm-3 mt-5 perbox'>
+        <div className='col-sm-3  perbox'>
           <div className='percentage'>
   
 
@@ -496,7 +505,9 @@ const UpdateProfileVendor = () => {
         <h6>My Profile Completeness</h6>
         <p>Please add your Standard Certificate</p>
           </div>
+          <img src={percentageimage1}  />
           </div>
+        
       </div>
     </div>
   );
